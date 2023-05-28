@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <meta charset='UTF-8'>
+    <style>
+        #notepad {
+  margin: 2em auto;
+  padding: 1em;
+  max-width: 600px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  font-family: sans-serif;
+  font-size: 1.2em;
+  line-height: 1.5;
+}
+
+#notepad h2 {
+  font-size: 1.5em;
+  margin-top: 0;
+}
+
+#notepad textarea {
+  width: 100%;
+  height: 300px;
+  border: none;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  font-size: 1.2em;
+  line-height: 1.5;
+}
+
+#notepad .buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#notepad button {
+  background-color: #eee;
+  color: #333;
+  border: none;
+  padding: 0.5em 1em;
+  margin-left: 0.5em;
+  cursor: pointer;
+}
+
+#notepad button:hover {
+  background-color: #ddd;
+}
+        
+        </style>
+</head>
+    <body>
+        <div id="notepad">
+  <h2>Bloco de Notas</h2>
+  <textarea id="text-area"></textarea>
+  <div class="buttons">
+    <button id="save-button">Salvar</button>
+    <button id="clear-button">Limpar</button>
+  </div>
+</div>
+        <script>
+            const saveButton = document.getElementById('save-button');
+const clearButton = document.getElementById('clear-button');
+const textArea = document.getElementById('text-area');
+
+saveButton.addEventListener('click', () => {
+  const text = textArea.value;
+  localStorage.setItem('notepad', text);
+  alert('Conteúdo salvo com sucesso!');
+});
+
+clearButton.addEventListener('click', () => {
+  textArea.value = '';
+    
+});
+
+window.addEventListener('load', () => {
+  const text = localStorage.getItem('notepad');
+  if (text !== null) {
+    textArea.value = text;
+  }
+});
+            </script>
+</body>
+</html>
